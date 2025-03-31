@@ -1,34 +1,31 @@
-// ex3.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+﻿
 #include <iostream>
 using namespace std;
+/* 
+     vd 4 5 6 7 1 2 3
+    hàm tìm giá trị nhỏ nhất trong mảng đã xoay n lần, sử dụng phương pháp tìm kiếm nhị phân
+    trong mỗi bước ta so sánh giá trị tại mid và tại right, nếu a[mid]>a[right] thì giá trị nhỏ nhất nằm ở
+    nửa mảng bên phải, còn nếu a[mid]<a[right] thì giá trị nhỏ nhất nằm ở nửa mảng bên trái hoặc là ở mid, vòng lặp 
+    while chạy cho đến khi left=right thì lúc đó a[left] là nhỏ nhất
+*/
 int min_element_of_arrays(int* a, int n)
 {
-    // 4 5 6 7 9 0 1 2 3 mid=4, a[mid]=9, amid<aright
-    // 8 9 1 2 3 4 5 6 7 mid =4, amid=3, amid
-    // 4 5 6 7 8 9 0 1 2
-    // 3 4 5 6 8 1 2
-    // 6 7 0 1 2 3 4
-    int left = 0;
-    int right = n - 1;
-    int mid = left + (right - left) / 2;
+    int left = 0;// gán left là phần tử đầu tiên của mảng
+    int right = n - 1;// right là phần tử cuối cùng của mảng
+   
     while (left <= right)
     {
-        
-        if (a[mid] > a[right])
+        int mid = left + (right - left) / 2; 
+        if (a[mid] > a[right])// nếu a[mid] > a[right] thì gtnn nằm ở nửa bên phải nên dịch left = mid + 1
         {
             left = mid + 1;
-            mid = left + (right - left) / 2;
         }
-        else
+        else // ngược lại thì gtnn nằm ở phía bên trái hoặc là nằm ở mid nên dịch right=mid
         {
             right = mid;
-            mid = left + (right - left) / 2;
         }
-        return a[left];
     }
-   
+    return a[left];
 }
 int main()
 {
@@ -43,13 +40,3 @@ int main()
     delete[]a;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

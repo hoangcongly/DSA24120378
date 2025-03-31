@@ -1,9 +1,15 @@
-// ex2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// ex2.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
 using namespace std;
-
+/*
+    Lưu giá trị cuối cùng của mảng vào biến last, sau đó gán giá trị cuối cùng của mảng bằng giá trị cần tìm
+    Sau đó lặp qua mảng từ đầu cho đến khi tìm thấy giá trị cần tìm
+    Sau đó gán lại giá trị cuối cùng của mảng 
+    Kiểm tra nếu i < n-1 nghĩa là tìm thấy K trong mảng, và kiểm tra phần tử cuối cùng của mảng có bằng K không, 
+    nếu có trả về i, nếu không có thì trả về -1;
+*/
 int Linear_Search_with_Sentinel(int* a, int n, int K)
 {
     int last = a[n - 1];
